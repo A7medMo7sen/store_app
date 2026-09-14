@@ -15,19 +15,24 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromRGBO(254, 206, 1, 1),
-          primary: const Color.fromRGBO(254, 206, 1, 1),
+          seedColor: const Color.fromRGBO(113, 116, 255, 1.0),
         ),
         textTheme: TextTheme(
+          titleLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           bodySmall: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(fontSize: 20, color: Colors.black),
+        ),
+
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         fontFamily: 'Lato',
+        useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }

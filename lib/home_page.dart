@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/product_deatils.dart';
 import 'package:store_app/show_product.dart';
 
 import 'global_variables.dart';
@@ -70,13 +71,13 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Chip(
                         backgroundColor: selectedFilter == filter
-                            ? Theme.of(context).colorScheme.primary
+                            ? const Color.fromRGBO(154, 221, 255, 1.0)
                             : const Color.fromRGBO(245, 247, 249, 1),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadiusGeometry.circular(30),
                         ),
                         side: BorderSide(
-                          color: const Color.fromRGBO(245, 247, 249, 1),
+                          color: const Color.fromRGBO(198, 198, 198, 1.0),
                         ),
                         label: Text(filter),
                         labelStyle: TextStyle(fontSize: 16),
@@ -95,10 +96,20 @@ class _HomePageState extends State<HomePage> {
                 itemCount: products.length,
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return ShowProducts(
-                    title: product['title'] as String,
-                    price: product['price'] as double,
-                    image: product['imageUrl'] as String,
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return ShowProductsDetails(product: product);
+                      },));
+                    },
+                    child: ShowProducts(
+                      backgroundColor: index.isEven
+                          ? const Color.fromRGBO(214, 240, 253, 1)
+                          : const Color.fromRGBO(245, 247, 249, 1),
+                      title: product['title'] as String,
+                      price: product['price'] as double,
+                      image: product['imageUrl'] as String,
+                    ),
                   );
                 },
               ),

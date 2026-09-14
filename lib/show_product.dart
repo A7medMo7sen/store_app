@@ -6,19 +6,26 @@ class ShowProducts extends StatelessWidget {
     required this.title,
     required this.price,
     required this.image,
+    required this.backgroundColor
   });
   final String title;
   final double price;
   final String image;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
-      padding: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(20),
+
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: const Color.fromRGBO(214, 240, 253, 1),
+        borderRadius: BorderRadius.circular(20),
+        color: backgroundColor,
+        border: BoxBorder.all(
+          color: Color.fromRGBO(0, 0, 0, .3),
+          width: 1
+        )
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
